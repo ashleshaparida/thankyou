@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>White Lotus — ASCII Bloom for Soham</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { 
+      margin: 0; 
+      width: 100%; 
+      height: 100%; 
+      overflow: hidden; 
+      background: #030809; 
+      font-family: Menlo, Consolas, monospace;
+    }
+    canvas { display: block; width: 100vw; height: 100vh; position: absolute; top: 0; left: 0; }
+    
+    /* Layout container keeping the center open for the flower */
+    .card-content {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100vh;
+      padding: 30px 40px;
+      pointer-events: none; /* Lets clicks pass through to canvas for replay */
+      color: #e5e5dc;
+      text-align: center;
+      opacity: 0;
+      animation: fadeIn 2s ease-in-out 1s forwards;
+    }
+
+    header {
+      pointer-events: auto;
+    }
+
+    header h1 {
+      font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+      letter-spacing: 0.2em;
+      color: #f0d98d;
+      margin: 0 0 8px 0;
+      text-shadow: 0 0 12px rgba(240, 217, 141, 0.4);
+      text-transform: uppercase;
+    }
+
+    /* Compact note box positioned neatly at the top so it doesn't cover the lotus */
+    .sweet-note {
+      max-width: 650px;
+      margin: 0 auto;
+      background: rgba(3, 8, 9, 0.82);
+      border: 1px solid rgba(139, 148, 132, 0.35);
+      padding: 14px 24px;
+      border-radius: 8px;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+      pointer-events: auto;
+    }
+
+    .sweet-note p {
+      font-size: clamp(0.85rem, 1.3vw, 1.05rem);
+      line-height: 1.5;
+      color: #d5d8ce;
+      margin: 0;
+    }
+
+    footer {
+      font-size: 0.75rem;
+      color: rgba(213, 216, 206, 0.45);
+      letter-spacing: 0.1em;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="screen" aria-label="An animated white lotus rendered in ASCII characters"></canvas>
+  
+  <div class="card-content">
+    <header>
+      <h1>Thank You Soham</h1>
+      <div class="sweet-note">
+        <p>Thank you for everything hun. You mean the world to me. You make everything brighter, if not instantly, you make it beautiful like a blooming flower. I love you tons (a ton more than you).</p>
+      </div>
+    </header>
+    
+    <!-- Spacer to push the canvas center down and keep the flower fully visible -->
+    <div></div>
+
+    <footer>
+      <span>[Press R, Space, or Click to Replay Bloom]</span>
+    </footer>
+  </div>
+
+  <script src="lotus.js"></script>
+</body>
+</html>
